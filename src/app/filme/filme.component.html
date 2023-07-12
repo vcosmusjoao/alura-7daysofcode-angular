@@ -1,1 +1,4 @@
-<p>filme works!</p>
+<div *ngFor="let movie of movieList.results">
+    <p>Titulos : {{movie}}</p>
+</div>
+<button (click)="onTeste()">Teste</button>
