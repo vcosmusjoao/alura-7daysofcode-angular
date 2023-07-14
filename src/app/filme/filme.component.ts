@@ -14,6 +14,7 @@ export class FilmeComponent implements OnInit {
   ngOnInit(): void {
     this.http.get<any>('assets/films.json').subscribe((data) => {
       this.movieList = data.results;
+      this.transformDateToYear();
     });
   }
 
@@ -21,5 +22,10 @@ export class FilmeComponent implements OnInit {
     console.log(this.movieList);
   }
 
+  transformDateToYear(): void {
+    this.movieList.forEach((movie:any) => {
+      movie.release_date = new Date(movie.release_date).getFullYear().toString();
+    });
+  }
 
 }

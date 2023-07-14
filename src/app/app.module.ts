@@ -9,6 +9,7 @@ import { FilmeComponent } from './filme/filme.component';
 import { NaveComponent } from './nave/nave.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
+    MatTableModule,
     HttpClientModule,
   ],
   providers: [],
