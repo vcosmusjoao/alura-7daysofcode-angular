@@ -5,7 +5,7 @@ import { FilmeComponent } from './filme/filme.component';
 import { NaveComponent } from './nave/nave.component';
 
 const routes: Routes = [
-  {path:'home', component: HomeComponent},
+  {path:'', component: HomeComponent},
   {path:'filme', component: FilmeComponent},
   {path:'nave',component:NaveComponent}
 ];
