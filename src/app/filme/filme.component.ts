@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FilmServiceService } from '../service/film-service.service';
+import { Result } from '../model/result';
+import { Films } from '../model/film';
 
 @Component({
   selector: 'app-filme',
@@ -8,23 +11,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilmeComponent implements OnInit {
 
-  constructor(private http: HttpClient){}
-  movieList: any;
+  constructor(private service: FilmServiceService){}
+  movieList: Result[] = [];
 
   ngOnInit(): void {
-    this.http.get<any>('assets/films.json').subscribe((data) => {
-      this.movieList = data.results;
-      this.transformDateToYear();
-    });
+    this.getMoviesFromService();
+    this.transformDateToYear();
   }
 
-  onTeste(){
-    console.log(this.movieList);
+  getMoviesFromService() {
+    this.service.getFilms().subscribe((data) => {
+      this.movieList = data;
+    });
+
   }
 
   transformDateToYear(): void {
-    this.movieList.forEach((movie:any) => {
-      movie.release_date = new Date(movie.release_date).getFullYear().toString();
+    this.movieList.forEach((movie:Result) => {
+      var release = movie.release_date.toISOString()
+      release = new Date(movie.release_date).getFullYear().toString();
     });
   }
 
