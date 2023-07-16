@@ -13,6 +13,7 @@ export class FilmeComponent implements OnInit {
 
   constructor(private service: FilmServiceService){}
   movieList: Result[] = [];
+  search: string = '';
 
   ngOnInit(): void {
     this.getMoviesFromService();
@@ -23,8 +24,14 @@ export class FilmeComponent implements OnInit {
     this.service.getFilms().subscribe((data) => {
       this.movieList = data;
     });
-
   }
+
+  getMoviesSearchedFromService(){
+    this.service.getFilms(this.search).subscribe((data)=>{
+      this.movieList = data;
+    })
+  }
+
 
   transformDateToYear(): void {
     this.movieList.forEach((movie:Result) => {

@@ -12,8 +12,11 @@ export class FilmServiceService {
   path = "https://swapi.dev/api";
   constructor(private http: HttpClient){}
 
-  getFilms(){
-    const path = `${this.path}/films`;
+  getFilms(search?:string){
+    let path = `${this.path}/films/`;
+    if(search){
+      path +=`?search=${search}`
+    }
     return  this.http.get<ApiReturn<Result>>(path).pipe(
       map(response => response.results)
     );
