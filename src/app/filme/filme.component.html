@@ -1,3 +1,11 @@
+<div class="input-container">
+  <mat-form-field  flex>
+    <input matInput [(ngModel)]="search" placeholder="Digite o nome do filme">
+  </mat-form-field>
+  
+  <button mat-button class="stretch-height" (click)="getMoviesSearchedFromService()">Buscar</button>
+</div>
+
 <table mat-table [dataSource]="movieList">
   <!-- Colunas da tabela -->
   <ng-container matColumnDef="title">

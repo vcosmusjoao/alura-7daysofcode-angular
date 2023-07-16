@@ -1,0 +1,19 @@
+button{
+    background-color:rgba(0, 0, 0, 0.459);
+    border: solid ;
+}
+
+.input-container{
+    display: flex;
+    align-items: stretch;
+}
+
+.input-container mat-form-field{
+    flex-grow: 1;
+    margin-right: 10px ;
+}
+
+.stretch-height {
+    align-self: stretch;
+    margin-top:10px;
+  }
